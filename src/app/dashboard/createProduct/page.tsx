@@ -53,8 +53,6 @@ interface Category {
 }
 
 
-
-
 export default function CreateProductPage({ product, onProductSaved }: any) {
   const [categories, setCategories] = useState<Category[]>([])
   const [images, setImages] = useState<File[]>([])
@@ -196,26 +194,27 @@ export default function CreateProductPage({ product, onProductSaved }: any) {
   }
 
   return (
-    <div className="w-full p-4">
+    <div className="w-full p-2 md:p-4">
       <h1 className={`font-lusitana my-8 text-2xl `}>{product ? "Edit Product" : "Create New Product"}</h1>
       <form onSubmit={handleSubmit(onSubmit)} className="rounded-[8px]  bg-gray-50 p-4 md:p-6 space-y-4">
         <div className="flex flex-col items-center md:flex-row gap-2 w-full md:justify-between">
-        <div className="flex-1">
-          <Label htmlFor="productName" className="mb-2 block text-sm font-medium">Product Name</Label>
+        <div className="w-full md:flex-1">
+          <Label htmlFor="productName" className="mb-2 block text-base font-medium">Product Name</Label>
           <Controller
             name="productName"
             control={control}
-            render={({ field }) => <Input                 className="peer bg-white block w-full rounded-md border border-gray-200 py-2 pl-2 text-sm outline-2 placeholder:text-gray-500" id="productName" {...field} />}
+            render={({ field }) => 
+            <Input  className="peer  bg-white rounded block w-full   border border-gray-200 py-2 pl-2 text-sm outline-2 placeholder:text-gray-500" id="productName" {...field} />}
           />
           {errors.productName && <p className="text-red-500 text-sm mt-1">{errors.productName.message}</p>}
         </div>
 
-        <div className="flex-1">
-          <Label htmlFor="price">Price</Label>
+        <div className="w-full md:flex-1">
+          <Label htmlFor="price text-base">Price</Label>
           <Controller
             name="price"
             control={control}
-            render={({ field }) => <Input                 className="peer bg-white block w-full rounded-md border border-gray-200 py-2 pl-2 text-sm outline-2 placeholder:text-gray-500" id="price" type="number" {...field} />}
+            render={({ field }) => <Input                 className="peer bg-white  rounded block w-full   border border-gray-200 py-2 pl-2 text-sm outline-2 placeholder:text-gray-500" id="price" type="number" {...field} />}
           />
           {errors.price && <p className="text-red-500 text-sm mt-1">{errors.price.message}</p>}
         </div>
@@ -225,16 +224,16 @@ export default function CreateProductPage({ product, onProductSaved }: any) {
         <div className="flex flex-col md:flex-row gap-2 w-full md:justify-between">
         <div className="flex-1">
         <div>
-          <Label htmlFor="category" className="mb-2 block text-sm font-medium">Category</Label>
+          <Label htmlFor="category" className="mb-2 block font-medium">Category</Label>
           <Controller
             name="category"
             control={control}
             render={({ field }) => (
               <Select onValueChange={field.onChange} defaultValue={field.value} >
-                <SelectTrigger className="bg-white">
-                  <SelectValue placeholder="Select a category" className="bg-white"/>
+                <SelectTrigger className="bg-white  rounded">
+                  <SelectValue placeholder="Select a category" className="bg-white  rounded"/>
                 </SelectTrigger>
-                <SelectContent className="peer block w-full cursor-pointer rounded-md border border-gray-200 bg-white text-black py-2 text-sm outline-2 placeholder:text-gray-500">
+                <SelectContent className="peer block w-full cursor-pointer   border border-gray-200 bg-white rounded  text-black py-2 text-sm outline-2 placeholder:text-gray-500">
                   {categories.map((cat) => (
                     <SelectItem key={cat._id} value={cat._id}>
                       {cat.name}
@@ -249,11 +248,11 @@ export default function CreateProductPage({ product, onProductSaved }: any) {
         </div>
 
         <div className="flex-1">
-          <Label htmlFor="tags" className="mb-2 block text-sm font-medium">Tags</Label>
+          <Label htmlFor="tags" className="mb-2 block  font-medium">Tags</Label>
           <Controller
             name="tags"
             control={control}
-            render={({ field }) => <Input                 className="peer bg-white block w-full rounded-md border border-gray-200 py-2 pl-2 text-sm outline-2 placeholder:text-gray-500" id="tags" {...field} placeholder="Enter tags separated by commas" />}
+            render={({ field }) => <Input                 className="peer bg-white rounded block w-full   border border-gray-200 py-2 pl-2 text-sm outline-2 placeholder:text-gray-500" id="tags" {...field} placeholder="Enter tags separated by commas" />}
           />
           {errors.tags && <p className="text-red-500 text-sm mt-1">{errors.tags.message}</p>}
         </div>
@@ -263,11 +262,11 @@ export default function CreateProductPage({ product, onProductSaved }: any) {
         <div className="flex flex-col md:flex-row gap-2 w-full md:justify-between">
         <div className="flex-1" >
         <div>
-          <Label htmlFor="discountPercentage" className="mb-2 bg-white block text-sm font-medium">Discount Percentage</Label>
+          <Label htmlFor="discountPercentage" className="mb-2 bg-white rounded block font-medium">Discount Percentage</Label>
           <Controller
             name="discountPercentage"
             control={control}
-            render={({ field }) => <Input                 className="peer bg-white block w-full rounded-md border border-gray-200 py-2 pl-2 text-sm outline-2 placeholder:text-gray-500" id="discountPercentage" type="number" {...field} />}
+            render={({ field }) => <Input                 className="peer bg-white rounded block w-full   border border-gray-200 py-2 pl-2 text-sm outline-2 placeholder:text-gray-500" id="discountPercentage" type="number" {...field} />}
           />
           {errors.discountPercentage && (
             <p className="text-red-500 text-sm mt-1">{errors.discountPercentage.message}</p>
@@ -279,7 +278,7 @@ export default function CreateProductPage({ product, onProductSaved }: any) {
           <Controller
             name="colors"
             control={control}
-            render={({ field }) => <Input id="colors"                 className="peer bg-white block w-full rounded-md border border-gray-200 py-2 pl-2 text-sm outline-2 placeholder:text-gray-500" {...field} placeholder="Enter colors separated by commas" />}
+            render={({ field }) => <Input id="colors"                 className="peer bg-white rounded block w-full   border border-gray-200 py-2 pl-2  outline-2 placeholder:text-gray-500" {...field} placeholder="Enter colors separated by commas" />}
           />
           {errors.colors && <p className="text-red-500 text-sm mt-1">{errors.colors.message}</p>}
         </div>
@@ -289,21 +288,21 @@ export default function CreateProductPage({ product, onProductSaved }: any) {
         <div className="flex flex-col md:flex-row gap-2 w-full md:justify-between">
         <div className="flex-1">
         
-          <Label htmlFor="sizes" className="mb-2 block text-sm font-medium">Sizes</Label>
+          <Label htmlFor="sizes" className="mb-2 block  font-medium">Sizes</Label>
           <Controller
             name="sizes"
             control={control}
-            render={({ field }) => <Input id="sizes"                 className="peer bg-white block w-full rounded-md border border-gray-200 py-2 pl-2 text-sm outline-2 placeholder:text-gray-500" {...field} placeholder="Enter sizes separated by commas" />}
+            render={({ field }) => <Input id="sizes"                 className="peer bg-white rounded block w-full   border border-gray-200 py-2 pl-2 text-sm outline-2 placeholder:text-gray-500" {...field} placeholder="Enter sizes separated by commas" />}
           />
           {errors.sizes && <p className="text-red-500 text-sm mt-1">{errors.sizes.message}</p>}
         </div>
 
         <div className="flex-1">
-          <Label htmlFor="inventory" className="mb-2 block text-sm font-medium">Inventory</Label>
+          <Label htmlFor="inventory" className="mb-2 block  font-medium">Inventory</Label>
           <Controller
             name="inventory"
             control={control}
-            render={({ field }) => <Input id="inventory"                 className="peer bg-white block w-full rounded-md border border-gray-200 py-2 pl-2 text-sm outline-2 placeholder:text-gray-500" type="number" {...field} />}
+            render={({ field }) => <Input id="inventory"                 className="peer bg-white rounded block w-full   border border-gray-200 py-2 pl-2 outline-2 placeholder:text-gray-500" type="number" {...field} />}
           />
           {errors.inventory && <p className="text-red-500 text-sm mt-1">{errors.inventory.message}</p>}
         </div>
@@ -313,41 +312,41 @@ export default function CreateProductPage({ product, onProductSaved }: any) {
      <div className="flex flex-col md:flex-row gap-2 w-full md:justify-between">
 <div className="flex-1">
         <div>
-          <Label htmlFor="material" className="mb-2 block text-sm font-medium">Material</Label>
-          <Controller name="material" control={control} render={({ field }) => <Input id="material" {...field}                 className="peer bg-white block w-full rounded-md border border-gray-200 py-2 pl-2 text-sm outline-2 placeholder:text-gray-500" />} />
+          <Label htmlFor="material" className="mb-2 block font-medium">Material</Label>
+          <Controller name="material" control={control} render={({ field }) => <Input id="material" {...field}                 className="peer bg-white rounded block w-full   border border-gray-200 py-2 pl-2 text-sm outline-2 placeholder:text-gray-500" />} />
           {errors.material && <p className="text-red-500 text-sm mt-1">{errors.material.message}</p>}
         </div>
         </div>
         <div className="flex-1">
-          <Label htmlFor="dimensions" className="mb-2 block text-sm font-medium">Dimensions</Label>
+          <Label htmlFor="dimensions" className="mb-2 block font-medium">Dimensions</Label>
           <Controller
             name="dimensions"
             control={control}
-            render={({ field }) => <Input                 className="peer bg-white block w-full rounded-md border border-gray-200 py-2 pl-2 text-sm outline-2 placeholder:text-gray-500" id="dimensions" {...field} placeholder="e.g., 120x60x80 cm" />}
+            render={({ field }) => <Input                 className="peer bg-white rounded block w-full   border border-gray-200 py-2 pl-2 text-sm outline-2 placeholder:text-gray-500" id="dimensions" {...field} placeholder="e.g., 120x60x80 cm" />}
           />
           {errors.dimensions && <p className="text-red-500 text-sm mt-1">{errors.dimensions.message}</p>}
         </div>
 </div>
 
         <div>
-          <Label htmlFor="weight" className="mb-2 block text-sm font-medium">Weight</Label>
-          <Controller name="weight" control={control} render={({ field }) => <Input                 className="peer bg-white block w-full rounded-md border border-gray-200 py-2 pl-2 text-sm outline-2 placeholder:text-gray-500" id="weight" {...field} />} />
+          <Label htmlFor="weight" className="mb-2 block font-medium">Weight</Label>
+          <Controller name="weight" control={control} render={({ field }) => <Input                 className="peer bg-white rounded block w-full   border border-gray-200 py-2 pl-2 text-sm outline-2 placeholder:text-gray-500" id="weight" {...field} />} />
           {errors.weight && <p className="text-red-500 text-sm mt-1">{errors.weight.message}</p>}
         </div>
 
 
         <div>
-          <Label htmlFor="description" className="mb-2 block text-sm font-medium">Description</Label>
+          <Label htmlFor="description" className="mb-2 block  font-medium">Description</Label>
           <Controller
             name="description"
             control={control}
-            render={({ field }) => <Textarea                 className="peer bg-white block w-full rounded-md border border-gray-200 py-2 pl-2 text-sm outline-2 placeholder:text-gray-500" id="description" {...field} />}
+            render={({ field }) => <Textarea                 className="peer bg-white rounded block w-full   border border-gray-200 py-2 pl-2 text-sm outline-2 placeholder:text-gray-500" id="description" {...field} />}
           />
           {errors.description && <p className="text-red-500 text-sm mt-1">{errors.description.message}</p>}
         </div>
         <div>
-          <Label htmlFor="images" className="mb-2 block text-sm font-medium">Images (2-4)</Label>
-          <Input                 className="peer bg-white block w-full rounded-md border border-gray-200 py-2 pl-2 text-sm outline-2 placeholder:text-gray-500" id="images" type="file" accept="image/*" multiple onChange={handleImageChange}  />
+          <Label htmlFor="images" className="mb-2 block  font-medium">Images (2-4)</Label>
+          <Input                 className="peer bg-white rounded block w-full   border border-gray-200 py-2 pl-2 text-sm outline-2 placeholder:text-gray-500" id="images" type="file" accept="image/*" multiple onChange={handleImageChange}  />
           <div className="flex flex-wrap gap-2">
             {images.map((image:File, index:number) => (
               <div key={index} className="relative" >
@@ -374,10 +373,10 @@ export default function CreateProductPage({ product, onProductSaved }: any) {
           {errors.root && <p className="text-red-500 text-sm mt-1">{errors.root.message}</p>}
         </div>
         <div className="flex gap-2">
-          <Button type="submit"     className="flex h-10 items-center rounded-[6px] bg-custom-green px-4 text-sm font-medium text-white transition-colors hover:bg-emerald-950" disabled={isLoading}>
+          <Button type="submit"     className="flex h-10 items-center rounded-[6px] bg-custom-green px-4  font-medium text-white transition-colors hover:bg-emerald-950" disabled={isLoading}>
             {isLoading ? `${product ? "Updating..." : "Creating..."}` : `${product ? "Update" : "Create"} Product`}
           </Button>
-          <Button type="button" variant="outline" className="rounded-[6px] flex h-10 items-center bg-gray-100 px-4 text-sm border-none font-medium text-gray-600 transition-colors hover:bg-gray-200" onClick={handleCancel}>
+          <Button type="button" variant="outline" className="rounded-[6px] flex h-10 items-center bg-gray-100 px-4  border-none font-medium text-gray-600 transition-colors hover:bg-gray-200" onClick={handleCancel}>
             Cancel
           </Button>
         </div>
