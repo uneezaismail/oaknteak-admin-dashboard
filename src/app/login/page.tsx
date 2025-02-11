@@ -1,3 +1,4 @@
+
 "use client"
 
 import type React from "react"
@@ -85,7 +86,7 @@ export default function LoginPage() {
           <CardFooter>
             <Button 
               type="submit" 
-              className="w-full py-4 px-4 bg-custom-green text-white font-bold rounded-lg shadow-md hover:shadow-lg transition hover:scale-105 duration-300 ease-in-out transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-opacity-50"
+              className="w-full py-4 px-4 bg-custom-green text-white font-bold rounded-lg shadow-md hover:shadow-lg transition hover:scale-105 hover:bg-custom-green duration-300 ease-in-out transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-opacity-50"
               disabled={isLoading}
             >
               {isLoading ? "Signing in..." : "Sign in"}
