@@ -153,7 +153,7 @@ export default function ReviewTable() {
               <tbody className="divide-y text-sm divide-gray-200 bg-white text-gray-900">
                 {filteredReviews.length > 0 ? (
                   filteredReviews.map((review) => (
-                    <tr key={review._id} className="text-sm lg:text-base">
+                    <tr key={review._id} className="text-sm ">
                       <td className="px-4 py-4">{review.product.productName}</td>
                       <td className="px-4 py-4">{`${review.customer.firstName} ${review.customer.lastName}`}</td>
                       <td className="px-4 py-4">{review.customerEmail}</td>

@@ -240,14 +240,14 @@ export default function OrdersTable() {
                             </div>
                             <div className="text-gray-500">{order.customer?.email}</div>
                           </td>
-                          <td className="whitespace-nowrap bg-white px-3 py-5 text-sm">
+                          <td className=" bg-white px-3 py-5 text-sm">
                             {order.items.map((item, idx) => (
                               <div key={idx}>
                                 {item.name} (x{item.quantity})
                               </div>
                             ))}
                           </td>
-                          <td className="max-w-60  bg-white px-3 py-5 text-sm">
+                          <td className=" bg-white px-3 py-5 text-sm">
                           {order.address
                 ? `${order.address.streetAddress}, ${order.address.area}, ${order.address.city}, ${order.address.province}, ${order.address.country} - ${order.address.zipCode}`
                 : "No address provided"}

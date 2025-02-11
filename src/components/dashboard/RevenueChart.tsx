@@ -102,7 +102,6 @@
 
 
 "use client"
-"use client"
 
 import type React from "react"
 import { Bar } from "react-chartjs-2"
@@ -118,7 +117,7 @@ interface RevenueData {
 
 const options = {
   responsive: true,
-  maintainAspectRatio: false, // This allows the chart to grow properly
+  maintainAspectRatio: false,
   plugins: {
     legend: {
       position: "top" as const,
@@ -176,8 +175,8 @@ const RevenueChart: React.FC = () => {
   }
 
   return (
-    <div className="p-2 md:p-4 bg-gray-100 rounded-[8px] w-full ">
-      <div className="rounded-[8px] w-full h-[300px] sm:w-[400px] md:w-[600px] bg-white lg:h-[400px]">
+    <div className="p-2 md:p-4 bg-gray-50 rounded-[8px] w-full lg:w-[600px]">
+      <div className="rounded-[8px] w-full h-[300px]  bg-white lg:h-[480px]">
       <Bar options={options} data={data} />
       </div>
     </div>

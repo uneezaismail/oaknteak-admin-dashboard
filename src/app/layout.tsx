@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { Inter, Lusitana } from "next/font/google";
 import "./globals.css";
-import { AuthProvider } from '@/components/context/AuthContext';
+import { UserProvider } from "@/context/useContext";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -26,9 +26,11 @@ export default function RootLayout({
   return (
 
       <html lang="en" className="scroll-smooth antialiased" suppressHydrationWarning>
+         <UserProvider>
         <body className={`${inter.variable} ${lusitana.variable} antialiased`}>
-        <AuthProvider>{children}</AuthProvider>
+       {children}
         </body>
+        </UserProvider>
       </html>
     
   );

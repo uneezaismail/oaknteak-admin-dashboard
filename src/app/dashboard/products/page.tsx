@@ -214,7 +214,7 @@ export default function ProductList() {
                         ))}
                       </div>
                       <table className="hidden min-w-full text-gray-900 md:table">
-                        <thead className="rounded-lg text-left text-sm font-normal">
+                        <thead className="rounded-[6px] text-left text-sm font-normal">
                           <tr>
                             <th scope="col" className="px-4 py-5 font-medium sm:pl-6">
                               Product
@@ -248,19 +248,19 @@ export default function ProductList() {
                               key={product._id}
                               className="w-full bg-white text-black border-b py-3 text-sm last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg"
                             >
-                              <td className="whitespace-nowrap py-3 pl-6 pr-3 bg-white text-black ">
+                              <td className="min-w-60 py-3 pl-6 pr-3 bg-white text-black ">
                                 <div className="flex items-center gap-3">
                                   <Image
-                                    src={product.images[0]?.asset.url || "/placeholder.svg"}
+                                    src={product.images[0]?.asset.url }
                                     className="rounded"
-                                    width={80}
-                                    height={80}
+                                    width={70}
+                                    height={70}
                                     alt={`${product.productName} image`}
                                   />
                                   <p>{product.productName}</p>
                                 </div>
                               </td>
-                              <td className="whitespace-nowrap bg-white text-black px-3 py-3">
+                              <td className=" bg-white text-black px-3 py-3">
                                 {product.category.name}
                               </td>
                               <td className="whitespace-nowrap px-3 py-3">Rs. {product.price}</td>
